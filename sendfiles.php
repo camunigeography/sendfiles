@@ -22,6 +22,7 @@ class sendfiles extends frontControllerApplication
 			'umaskPermissions'		=> 0002,
 			'mkdirPermissions'		=> 02770,
 			'chmodPermissions'		=> 0660,
+			'tabUlClass'			=> 'tabsflat',
 		);
 		
 		# Return the defaults
