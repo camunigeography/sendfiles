@@ -606,15 +606,6 @@ class sendfiles extends frontControllerApplication
 			$(document).ready(function(){
 				$('#submissionform').submit(function() {
 					
-					// Validate e-mail field
-					var reg = /^([A-Za-z0-9_\-\.\+])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-					var address = $('#email').val();
-					if(reg.test(address) == false){
-						alert('Please ensure you have entered a valid e-mail address.');
-						$('#email').focus();
-						return false;
-					}
-					
 					// Avoid empty description field
 					if($('#note').val() == ''){
 						alert('You must enter a description.');
