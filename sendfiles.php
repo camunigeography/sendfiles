@@ -359,11 +359,11 @@ class sendfiles extends frontControllerApplication
 		
 		# Select details to show
 		$details = array (
-			'File name' => "<strong><a href=\"{$link}\">{$file['file']}</a></strong>",
-			'File size' => $size,
-			'Uploaded by' => htmlspecialchars ($file['user']),
-			'Uploaded at' => date ('g:ia, jS F Y', $file['timestamp']),
-			'Downloadable until' => $file['timeoutFormatted'],
+			'File name'				=> "<strong><a href=\"{$link}\">{$file['file']}</a></strong>",
+			'File size'				=> $size,
+			'Uploaded by'			=> htmlspecialchars ($file['user']),
+			'Uploaded at'			=> date ('g:ia, jS F Y', $file['timestamp']),
+			'Downloadable until'	=> $file['timeoutFormatted'],
 		);
 		
 		# Compile the HTML
@@ -656,9 +656,9 @@ class sendfiles extends frontControllerApplication
 			
 			# Compile the e-mail to the sender
 			$message  = "This e-mail confirms that you have uploaded a file with the following details:\n\n";
-			$message .= "Filename: {$filename}\n";
-			$message .= "To:       {$result['userEmail']}\n";
-			$message .= "Note:     " . (substr_count ($result['note'], "\n") ? "\n" : '') . $result['note'] . "\n\n";
+			$message .= "Filename:  {$filename}\n";
+			$message .= "To:        {$result['userEmail']}\n";
+			$message .= "Note:      " . (substr_count ($result['note'], "\n") ? "\n" : '') . $result['note'] . "\n\n";
 			$message .= "The recipient has been sent a unique link to pick up the file, so you need take no further action.\n\n";
 			$message .= "\nThey have been informed of the deadline for collection, which is {$availableUntil}.\n\n";
 			$message .= "\n--\n";
