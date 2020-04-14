@@ -86,6 +86,11 @@ class sendfiles extends frontControllerApplication
 				'description' => 'Send a file to someone',
 				'authentication' => false,
 			),
+			'progressbar' => array (
+				'url' => 'progressbar/%id',
+				'description' => false,
+				'export' => true,
+			),
 		);
 		
 		# Return the actions
@@ -622,6 +627,7 @@ class sendfiles extends frontControllerApplication
 			'required'			=> true,
 			'flatten'			=> true,
 			'output'			=> array ('processing' => 'compiled', ),
+			'progressbar'		=> $this->baseUrl . '/progressbar',
 		));
 		$form->textarea (array (
 			'name'				=> 'note',
@@ -723,6 +729,14 @@ class sendfiles extends frontControllerApplication
 				return $key;
 			}
 		}
+	}
+	
+	
+	# AJAX endpoint function to provide progress upload
+	public function progressbar ()
+	{
+		# Run the ultimateForm helper function
+		form::progressbar ();
 	}
 }
 

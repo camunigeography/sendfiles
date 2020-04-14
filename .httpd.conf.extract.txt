@@ -28,12 +28,19 @@
 	RewriteRule ^$applicationBaseUrl/download/(.+)/delete.html$ $applicationBaseUrl/index.html?action=filedelete&key=$1 [L]
 	RewriteRule ^$applicationBaseUrl/invite/send/$ $applicationBaseUrl/index.html?action=invitesend [L]
 	RedirectMatch Permanent ^$applicationBaseUrl/invite/send$ $applicationBaseUrl/invite/send/
+	RewriteRule ^$applicationBaseUrl/progressbar/([0-9a-f]{32})$ $applicationBaseUrl/index.html?action=progressbar&id=$1 [L]
 	
 	# Enable large uploads
 	<Location $applicationBaseUrl/>
 		php_flag file_uploads on
 		php_value upload_max_filesize 2000M
 		php_value post_max_size 2000M
+	</Location>
+	
+	# Progress bar and AJAX endpoint
+	<Location $applicationBaseUrl/progressbar>
+		php_value auto_prepend_file none
+		php_value auto_append_file none
 	</Location>
 	
 	# Prevent direct downloads of data files
