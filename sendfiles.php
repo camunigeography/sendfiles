@@ -598,28 +598,6 @@ class sendfiles extends frontControllerApplication
 		# Pre-determine the filename of the file, post-upload, allocating an arbitary username if in external mode
 		$appendExtension = '.' . $key . '.' . time () . '.' . $user;
 		
-		# Validate form elements, because the upload will take place beforehand, resulting in a long wait for problems to be flagged up
-		#!# This should be native to ultimateForm
-		echo "
-		<script src=\"https://code.jquery.com/jquery-latest.min.js\"></script>
-		<script type=\"text/javascript\">
-			$(document).ready(function(){
-				$('#submissionform').submit(function() {
-					
-					// Avoid empty description field
-					if($('#note').val() == ''){
-						alert('You must enter a description.');
-						$('#note').focus();
-						return false;
-					}
-					
-					// No problems
-					return true;
-				});
-			});
-		</script>
-		";
-		
 		# Create the form
 		$form = new form (array (
 			'formCompleteText'		=> false,
