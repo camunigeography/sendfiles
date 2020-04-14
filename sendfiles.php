@@ -651,11 +651,8 @@ class sendfiles extends frontControllerApplication
 			$availableUntil = $this->availableUntil (time (), true);
 			
 			# Obtain the originally-uploaded filename (before appendExtension would have been applied)
-			#!# May not be giving the correct result
-			$filename = false;
-			foreach ($result['file'] as $diskFilename => $attributes) {
-				$filename = basename ($attributes['tmp_name']);
-			}
+			$firstFile = application::array_first_value ($result['file']);
+			$filename = preg_replace ('/' . preg_quote ($appendExtension, '/') . '$/', '', $firstFile['name']);
 			
 			# Compile the e-mail to the sender
 			$message  = "This e-mail confirms that you have uploaded a file with the following details:\n\n";
