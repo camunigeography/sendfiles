@@ -1,0 +1,22 @@
+<?php
+
+# Define the members of the Department
+$members = array ('spqr1', 'abc12', );		// Replace with your database lookup function, returning a list of usernames
+
+# Settings
+$settings = array (
+	'institution'			=> 'the Department of Widgets, University of Placeford',
+	'memberDescription'		=> 'member of the Department',
+	'membersDescription'	=> 'members of the Department',
+	'members'				=> $members,
+	'umaskPermissions'		=> 0002,
+	'mkdirPermissions'		=> 02770,
+	'chmodPermissions'		=> 0660,
+);
+
+# Load and run the sendfiles system
+require_once ('sendfiles.php');
+new sendfiles ($settings);
+
+
+// No closing PHP tag to guarantee that there is no whitespace sent to the browser (important for the file downloads)

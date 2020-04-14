@@ -1,0 +1,45 @@
+# Sendfiles application Apache directives
+
+# Load using:
+#	# Sendfiles
+#	Include /path/to/sendfiles/.httpd.conf.extract.txt
+#	Use MacroSendfiles "" "/path/to/sendfiles/:/path/to/php/libraries/" "/var/www/htdocs/www.example.org/"
+
+<Macro MacroSendfiles $applicationBaseUrl $includePath $documentRoot>
+	
+	# Include path
+	<Location $applicationBaseUrl/>
+		php_value include_path "$includePath"
+	</Location>
+
+	# Front controller application support
+	Use MacroFrontControllerApplication "$applicationBaseUrl/" "Sendfiles"
+	
+	# Application routing
+	RewriteRule ^$applicationBaseUrl/(upload|download|invite)/$ $applicationBaseUrl/index.html?action=$1 [L]
+	RedirectMatch Permanent ^$applicationBaseUrl/(upload|download|invite)$ $applicationBaseUrl/$1/
+	RewriteRule ^$applicationBaseUrl/(upload)/(internal|external)/$ $applicationBaseUrl/index.html?action=$1$2 [L]
+	RedirectMatch Permanent ^$applicationBaseUrl/(upload)/(internal|external)$ $applicationBaseUrl/$1/$2/
+	RewriteRule ^$applicationBaseUrl/upload/external/([^/]+)/$ $applicationBaseUrl/index.html?action=uploadexternal&key=$1 [L]
+	RedirectMatch Permanent ^$applicationBaseUrl/upload/external/([^/]+)/$ $applicationBaseUrl/upload/external/$1/
+	RewriteRule ^$applicationBaseUrl/download/([^/]+)/$ $applicationBaseUrl/index.html?action=download&key=$1 [L]
+	RedirectMatch Permanent ^$applicationBaseUrl/download/([^/]+)$ $applicationBaseUrl/download/$1/
+	RewriteRule ^$applicationBaseUrl/download/(.+)/file$ $applicationBaseUrl/index.html?action=filetransfer&key=$1 [L]
+	RewriteRule ^$applicationBaseUrl/download/(.+)/delete.html$ $applicationBaseUrl/index.html?action=filedelete&key=$1 [L]
+	RewriteRule ^$applicationBaseUrl/invite/send/$ $applicationBaseUrl/index.html?action=invitesend [L]
+	RedirectMatch Permanent ^$applicationBaseUrl/invite/send$ $applicationBaseUrl/invite/send/
+	
+	# Enable large uploads
+	<Location $applicationBaseUrl/>
+		php_flag file_uploads on
+		php_value upload_max_filesize 2000M
+		php_value post_max_size 2000M
+	</Location>
+	
+	# Prevent direct downloads of data files
+	<Directory $documentRoot$applicationBaseUrl/data/>
+		Deny from all
+	</Directory>
+	
+</Macro>
+
