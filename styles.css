@@ -1,4 +1,4 @@
-#sendfiles p.download {font-size: 1.3em; margin-top: 2em;}
-#sendfiles p.download a {padding: 10px;}
+#sendfiles p.mainbutton {font-size: 1.3em; margin-top: 2em;}
+#sendfiles p.mainbutton a {padding: 10px;}
 #sendfiles a.delete:hover {background-color: red; color: white;}
 

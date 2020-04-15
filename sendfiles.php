@@ -252,7 +252,7 @@ class sendfiles extends frontControllerApplication
 		if ($this->isMember) {
 			$html  = "<p>You appear to be a " . ucfirst ($this->settings['memberDescription']) . ", so can send files directly.</p>";
 			$html .= "<p class=\"comment\">(By comparison, external members require an invitation from a " . ucfirst ($this->settings['memberDescription']) . ".)</p>";
-			$html .= "<p class=\"download\"><a class=\"actions\" href=\"{$this->baseUrl}/upload/internal/\"><img src=\"/images/icons/email.png\" alt=\"*\" class=\"icon\" /> <strong>Send a file</strong></a></p>";
+			$html .= "<p class=\"mainbutton\"><a class=\"actions\" href=\"{$this->baseUrl}/upload/internal/\"><img src=\"/images/icons/email.png\" alt=\"*\" class=\"icon\" /> <strong>Send a file</strong></a></p>";
 		} else {
 			$html  = "
 			<p>Are you:</p>
@@ -328,7 +328,7 @@ class sendfiles extends frontControllerApplication
 		} else {
 			$link = "{$this->baseUrl}/download/{$_GET['key']}/file";
 			$html  = "\n<p>The file is now available for you to download.</p>";
-			$html .= "<p class=\"download\"><a class=\"actions\" href=\"{$link}\"><img src=\"/images/icons/bullet_go.png\" alt=\"*\" class=\"icon\" /> <strong>Download now</strong></a></p>";
+			$html .= "<p class=\"mainbutton\"><a class=\"actions\" href=\"{$link}\"><img src=\"/images/icons/bullet_go.png\" alt=\"*\" class=\"icon\" /> <strong>Download now</strong></a></p>";
 			$html .= "\n<p>Details of the file are as follows:</p>";
 			$html .= $this->metadataTable ($file, $link);
 			$html .= "\n<p>The file will remain available until the date shown, so you can download it again until then.<br />Or you can <a href=\"{$this->baseUrl}/download/{$_GET['key']}/delete.html\" class=\"delete\" onclick=\"javascript:return confirm('Are you sure you want to delete this file?')\">delete it immediately</a>.</p>";
@@ -443,7 +443,7 @@ class sendfiles extends frontControllerApplication
 	{
 		# Construct the HTML
 		$html  = "<p>If you are a " . htmlspecialchars ($this->settings['memberDescription']) . " and want to allow someone externally to send you a file, send an invite:";
-		$html .= "<p class=\"download\"><a class=\"actions\" href=\"{$this->baseUrl}/invite/send/\"><img src=\"/images/icons/email.png\" alt=\"*\" class=\"icon\" /> <strong>Send an invite</strong></a></p>";
+		$html .= "<p class=\"mainbutton\"><a class=\"actions\" href=\"{$this->baseUrl}/invite/send/\"><img src=\"/images/icons/email.png\" alt=\"*\" class=\"icon\" /> <strong>Send an invite</strong></a></p>";
 		
 		# Show the HTML
 		echo $html;
