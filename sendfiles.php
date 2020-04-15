@@ -35,6 +35,12 @@ class sendfiles extends frontControllerApplication
 	{
 		# Specify additional actions
 		$actions = array (
+			'home' => array (
+				'tab' => 'Home',
+				'url' => '',
+				'description' => 'Welcome to Sendfiles',
+				'authentication' => false,
+			),
 			'upload' => array (
 				'tab' => 'Send a file',
 				'icon' => 'add',
@@ -238,7 +244,9 @@ class sendfiles extends frontControllerApplication
 	{
 		# Construct the HTML
 		$html  = "\n<p>Welcome to Sendfiles, which lets {$this->settings['membersDescription']} send and receive large files that are impractical to send by e-mail.</p>";
-		$html .= "\n<p>Please use the menu links to send or retrieve files.</p>";
+		$sendLink = ($this->isMember ? '/upload/internal/' : '/upload/');
+		$html .= "<p class=\"mainbutton\"><a class=\"actions\" href=\"{$this->baseUrl}{$sendLink}\"><img src=\"/images/icons/add.png\" alt=\"*\" class=\"icon\" /> <strong>Send a file</strong></a></p>";
+		$html .= "<p class=\"mainbutton\"><a class=\"actions\" href=\"{$this->baseUrl}/download/\"><img src=\"/images/icons/page_white_go.png\" alt=\"*\" class=\"icon\" /> <strong>Collect a file</strong></a></p>";
 		
 		# Show the HTML
 		echo $html;
