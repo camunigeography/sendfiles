@@ -413,7 +413,7 @@ class sendfiles extends frontControllerApplication
 		# Send headers
 		header ('Content-Description: File Transfer');
 		header ('Content-Type: application/octet-stream');
-		header ('Content-Disposition: attachment; filename=' . $file['file']);
+		header ('Content-Disposition: attachment; filename="' . $file['file'] . '"');	// Quotes needed to avoid ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION; see: https://stackoverflow.com/q/13578428
 		header ('Content-Transfer-Encoding: binary');
 		header ('Expires: 0');
 		header ('Cache-Control: must-revalidate, post-check=0, pre-check=0');
