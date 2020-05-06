@@ -689,7 +689,7 @@ class sendfiles extends frontControllerApplication
 			$message  = "{$result['name']} has left a file for you to pick up.\n\n";
 			$message .= "To pick up the file, please go to:\n\n";
 			$message .= "  {$_SERVER['_SITE_URL']}{$this->baseUrl}/download/{$key}/\n\n";
-			$message .= "The following note about this file was added:\n";
+			$message .= "The following note about this file was added:\n\n";
 			$message .= "{$result['note']}\n\n";
 			$message .= "\nDeadline for collection:  {$availableUntil}.\n\n";
 			$message .= "\n--\n";
