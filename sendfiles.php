@@ -671,7 +671,7 @@ class sendfiles extends frontControllerApplication
 			# Compile the e-mail to the sender
 			$message  = "This e-mail confirms that you have uploaded a file with the following details:\n\n";
 			$message .= "Filename:  {$filename}\n";
-			$message .= "To:        {$result['userEmail']}\n";
+			$message .= "To:        {$result['email']}\n";
 			$message .= "Note:      " . (substr_count ($result['note'], "\n") ? "\n" : '') . $result['note'] . "\n\n";
 			$message .= "The recipient has been sent a unique link to pick up the file, so you need take no further action.\n\n";
 			$message .= "\nThey have been informed of the deadline for collection, which is {$availableUntil}.\n\n";
