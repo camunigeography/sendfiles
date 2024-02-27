@@ -45,7 +45,7 @@
 	
 	# Prevent direct downloads of data files
 	<Directory $documentRoot$applicationBaseUrl/data/>
-		Deny from all
+		Require all denied
 	</Directory>
 	
 </Macro>
