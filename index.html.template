@@ -8,7 +8,7 @@ $settings = array (
 	'institution'			=> 'the Department of Widgets, University of Placeford',
 	'memberDescription'		=> 'member of the Department',
 	'membersDescription'	=> 'members of the Department',
-	'members'				=> $members,
+	'userIsMemberCallback'	=> 'userIsMemberCallback',		// Callback function, receiving a username and returning true/false
 	'umaskPermissions'		=> 0002,
 	'mkdirPermissions'		=> 02770,
 	'chmodPermissions'		=> 0660,
@@ -17,6 +17,12 @@ $settings = array (
 # Load and run the sendfiles system
 require_once ('sendfiles.php');
 new sendfiles ($settings);
+
+# Callback function to determine if a user is a member of the Department
+function userIsMemberCallback ($username)
+{
+	//return bool;
+}
 
 
 // No closing PHP tag to guarantee that there is no whitespace sent to the browser (important for the file downloads)

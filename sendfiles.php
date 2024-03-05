@@ -12,7 +12,7 @@ class sendfiles extends frontControllerApplication
 			'useDatabase'			=> false,
 			'div'					=> 'sendfiles',
 			'institution'			=> NULL,
-			'members'				=> array (),	// Simple array of usernames
+			'userIsMemberCallback'	=> NULL,		// Callback function, receiving a username and returning true/false
 			'memberDescription'		=> 'member',
 			'membersDescription'	=> 'members',
 			'data'					=> '/data/',
@@ -108,8 +108,8 @@ class sendfiles extends frontControllerApplication
 	# Additional main processing
 	public function main ()
 	{
-		# Determine if the user is a member
-		$this->isMember = ($this->user && in_array ($this->user, $this->settings['members']));
+		# Get the members list
+		$this->isMember = $this->settings['userIsMemberCallback'] ($this->user);
 		
 		# Ensure there is a (slash-terminated) data directory
 		if (!$this->dataDirectory = $this->directoryOk ($this->settings['data'])) {return false;}
