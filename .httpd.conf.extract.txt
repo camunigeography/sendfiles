@@ -3,15 +3,10 @@
 # Load using:
 #	# Sendfiles
 #	Include /path/to/sendfiles/.httpd.conf.extract.txt
-#	Use MacroSendfiles "" "/path/to/sendfiles/:/path/to/php/libraries/" "/var/www/htdocs/www.example.org/"
+#	Use MacroSendfiles "" "/var/www/htdocs/www.example.org/"
 
-<Macro MacroSendfiles $applicationBaseUrl $includePath $documentRoot>
+<Macro MacroSendfiles $applicationBaseUrl $documentRoot>
 	
-	# Include path
-	<Location $applicationBaseUrl/>
-		php_value include_path "$includePath"
-	</Location>
-
 	# Front controller application support
 	Use MacroFrontControllerApplication "$applicationBaseUrl/" "Sendfiles"
 	

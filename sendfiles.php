@@ -1,7 +1,6 @@
 <?php
 
 # Class to facilitate sending of large files between internal and external users
-require_once ('frontControllerApplication.php');
 class sendfiles extends frontControllerApplication
 {
 	# Function to assign defaults additional to the general application defaults
@@ -162,7 +161,6 @@ class sendfiles extends frontControllerApplication
 	{
 		# Get the file listing
 		#!# skipUnreadableFiles is a bit of a shortcut and means problems aren't reported
-		require_once ('directories.php');
 		$files = directories::listFiles ($directory, $supportedFileTypes = array (), $directoryIsFromRoot = true, $skipUnreadableFiles = true);
 		
 		# Loop through each file so that the extensions in the name can be split out

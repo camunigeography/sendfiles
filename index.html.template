@@ -15,7 +15,7 @@ $settings = array (
 );
 
 # Load and run the sendfiles system
-require_once ('sendfiles.php');
+require_once ('vendor/autoload.php');
 new sendfiles ($settings);
 
 # Callback function to determine if a user is a member of the Department

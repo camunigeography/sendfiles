@@ -1,0 +1,16 @@
+{
+    "name": "camunigeography/sendfiles",
+    "description": "Application to facilitate sending of large files using a web interface",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "stable",
+    "require": {
+        "libpurecontent/frontcontrollerapplication": "^1.13",
+        "libpurecontent/directories": "^1.3",
+        "libpurecontent/application": "^1.9",
+        "libpurecontent/ultimateform": "^1.29"
+    },
+    "autoload": {
+        "files": ["sendfiles.php"]
+    }
+}
